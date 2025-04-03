@@ -1,5 +1,7 @@
 <?php
 include 'config.php';
+require_once 'functions.php';
+checkAdminAuth();
 
 $stmt = $pdo->query("
     SELECT 

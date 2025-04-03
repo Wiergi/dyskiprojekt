@@ -1,4 +1,32 @@
 <?php
+require_once 'functions.php';
+checkAdminAuth(); // Wymagaj logowania
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $db = new PDO('mysql:host=localhost;dbname=nazwa_bazy', 'login', 'hasło');
+
+    $stmt = $db->prepare("SELECT id, password_hash FROM admins WHERE username = ?");
+    $stmt->execute([$username]);
+    $admin = $stmt->fetch();
+
+    if ($admin && password_verify($password, $admin['password_hash'])) {
+        $_SESSION['admin_logged_in'] = true;
+        $_SESSION['admin_id'] = $admin['id'];
+        $_SESSION['admin_username'] = $username;
+        
+        // Zabezpieczenie przed atakami session fixation
+        session_regenerate_id(true);
+        
+        header('Location: dashboard.php');
+        exit;
+    } else {
+        header('Location: login.php?error=1');
+        exit;
+    }
+}
 include 'config.php';
 
 // Pobranie danych do dashboardu
@@ -270,7 +298,7 @@ $lista_produktow = $stmt_lista_produktow->fetchAll();
                         <small class="text-muted">admin@gmail.com</small>
                     </div>
                 </div>
-                <a href="#" class="btn btn-sm btn-outline-light w-100 mt-2">
+                <a href="logout.php" class="btn btn-sm btn-outline-light w-100 mt-2">
                     <i class="bi bi-box-arrow-right"></i> Wyloguj
                 </a>
             </div>

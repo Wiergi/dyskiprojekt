@@ -35,6 +35,7 @@ $zamowienia = $stmt->fetchAll();
                 <li><a href="index.php">Dashboard</a></li>
                 <li><a href="produkty.php">Produkty</a></li>
                 <li><a href="zamowienia.php">Zamówienia</a></li>
+                <li><a href="uzytkownicy.php">Użytkownicy</a></li>
             </ul>
         </nav>
     </header>
