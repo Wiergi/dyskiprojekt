@@ -116,9 +116,113 @@ if ($mysqli->connect_error) {
             display: flex;
             gap: 10px;
         }
+/* header-style.css */
+
+.navbar_container {
+    display: flex;
+    justify-content: space-around; /* Równomierne rozmieszczenie elementów */
+    align-items: center; /* Wyśrodkowanie w pionie */
+    background-color: #333; /* Ciemne tło */
+    color: white; /* Biały kolor tekstu */
+    padding: 10px 20px; /* Odstępy wewnątrz */
+    position: relative; /* Dla pozycjonowania absolutnego przycisku zamykania */
+}
+
+/* Ukryj checkbox i przycisk zamykania na większych ekranach */
+.close-sidebar-button {
+    display: none;
+}
+
+.home-link {
+    text-decoration: none; /* Usuń podkreślenie */
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#logo {
+    height: 60px; /* Zmniejsz logo */
+}
+
+/* Style dla linków nawigacyjnych */
+.navbar_container a {
+    color: #eee; /* Jaśniejszy kolor linków */
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease; /* Efekt hover */
+}
+
+.navbar_container a:hover {
+    background-color: #555; /* Jaśniejsze tło po najechaniu */
+}
+
+/* Style dla ikony koszyka */
+.cart {
+    height: 40px; /* Zmniejsz ikonę koszyka */
+    vertical-align: middle; /* Wyśrodkuj w pionie */
+}
+
+/* Style dla przycisku koszyka */
+#cart-page {
+    background-color: #4CAF50; /* Zielony kolor przycisku */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#cart-page:hover {
+    background-color: #367c39; /* Ciemniejszy zielony po najechaniu */
+}
+
+/* Media queries dla responsywności (dla małych ekranów) */
+@media (max-width: 768px) {
+    .navbar_container {
+        flex-direction: column; /* Elementy w kolumnie */
+        align-items: flex-start; /* Wyrównaj do lewej */
+    }
+
+    /* Pokaż checkbox i przycisk zamykania */
+    .close-sidebar-button {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .close-sidebar-button svg {
+        fill: white; /* Kolor ikony */
+    }
+
+    /* Ukryj elementy nawigacyjne */
+    .navbar_container > a {
+        display: none;
+    }
+
+    #cart-page {
+        margin-top: 10px;
+    }
+}
+
     </style>
 </head>
 <body>
+<div class="navbar_container">
+            <label for="sidebar-active" class="close-sidebar-button">
+            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="undefined"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+            </label>  
+            <a href="index.php" class="home-link" id="home-page"><img src="photos/logo.svg" alt="LOGO"  id="logo" height="80"></a>
+            <a href="#about" class="about-link" id="about-page">About us</a>
+            <a href="produkty.php" class="ulsugi-link" id="assortment">Our assortment</a>
+            <a href="#contact" class="contact-link" id="contact-page">Contact</a>
+            <a href="koszyk.php" class="button" id="cart-page"><img src="photos/cart.svg" alt="cart" class="cart" height="60px"></a>
+    </div>
     <div class="container">
         <h2>Twój koszyk</h2>
         

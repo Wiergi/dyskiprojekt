@@ -11,7 +11,7 @@ if (!isset($mysqli)) {
 }
 
 // Pobranie szczegółów produktu na podstawie ID
-$product_id = isset($_GET['id']) ? intval($_GET['id']) : 14;
+$product_id = isset($_GET['produkt_id']) ? intval($_GET['produkt_id']) : 0;
 $productQuery = "SELECT p.nazwa, p.cena, p.opis, p.ilosc_w_magazynie, p.data_dodania, 
                         po.wartość AS pojemnosc, pr.nazwa AS producent, t.opis AS typ_opis 
                  FROM produkty p 
@@ -45,7 +45,7 @@ while ($row = $capacitiesResult->fetch_assoc()) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($product['nazwa']); ?> - Zakup</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <style>
         body {
             background-color: #000;
@@ -160,9 +160,136 @@ while ($row = $capacitiesResult->fetch_assoc()) {
             background-color: #222;
             color: #fff;
         }
+        
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", serif;
+    scroll-behavior: smooth ;
+    scroll-padding-top: 400px;
+    background-color: black;
+}
+
+nav{
+  height: 80px;
+  background-color: rgba(0, 0, 0, 1);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+    
+}
+.navbar_container{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 10px;
+}
+nav a{
+  height: 100%;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: whitesmoke;
+}
+nav a:hover{
+    color: lightgray;
+    transition: 0.4s ease-in-out;
+}
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+    margin: 20px 0;
+    height: 55px;
+}
+.button:hover{
+    transform: scale(1.1);
+    transition-duration: 0.5s;
+    color: lightslategray;
+}
+nav .home-link{
+  margin-right: auto;
+}
+nav svg{
+  fill: gray;
+}
+nav svg:hover{
+    fill: black;
+    transition: .4s ease-in-out;
+}
+#sidebar-active{
+  display: none;
+}
+.open-sidebar-button, .close-sidebar-button{
+  display: none;
+}
+@media(max-width: 665px){
+  .navbar_container{
+    flex-direction: column;
+    align-items: flex-start;
+
+    position: fixed;
+    top: 0;
+    right: -100%;
+    z-index: 10;
+    width: 300px;
+
+    background-color: black;
+    box-shadow: -5px 0 5px rgba(0, 0, 0, 0.25);
+    transition: 0.75s ease-out;
+  }
+  nav .home-link{
+    display: none;
+  }
+  nav a{
+    box-sizing: border-box;
+    height: auto;
+    width: 100%;
+    padding: 20px 30px;
+    justify-content: flex-start;
+  }
+  .open-sidebar-button, .close-sidebar-button{
+    padding: 20px;
+    display: block;
+    cursor: pointer;
+  }
+  #sidebar-active:checked ~ .navbar_container{
+    right: 0;
+  }
+  #sidebar-active:checked ~ #overlay{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9;
+  }
+}
     </style>
 </head>
 <body>
+<div class="navbar_container">
+            <label for="sidebar-active" class="close-sidebar-button">
+            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="undefined"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+            </label>  
+            <a href="index.php" class="home-link" id="home-page"><img src="photos/logo.svg" alt="LOGO"  id="logo" height="80"></a>
+            <a href="#about" class="about-link" id="about-page">About us</a>
+            <a href="produkty.php" class="ulsugi-link" id="assortment">Our assortment</a>
+            <a href="#contact" class="contact-link" id="contact-page">Contact</a>
+            <a href="koszyk.php" class="button" id="cart-page"><img src="photos/cart.svg" alt="cart" class="cart" height="60px"></a>
+    </div>
     <div class="product-page">
         <div class="product-image">
             <img src="photos/product-placeholder.png" alt="<?php echo htmlspecialchars($product['nazwa']); ?>">

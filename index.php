@@ -19,10 +19,11 @@
             <label for="sidebar-active" class="close-sidebar-button">
             <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="undefined"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
             </label>  
-            <a href="#about" class="home-link" id="home-page"><img src="photos/logo.svg" alt="LOGO"  id="logo" height="80"></a>
+            <a href="index.php" class="home-link" id="home-page"><img src="photos/logo.svg" alt="LOGO"  id="logo" height="80"></a>
             <a href="#about" class="about-link" id="about-page">About us</a>
-            <a href="#assortment" class="ulsugi-link" id="assortment">Our assortment</a>
-            <a href="#contact" class="button" id="contact-page">Contact</a>
+            <a href="produkty.php" class="ulsugi-link" id="assortment">Our assortment</a>
+            <a href="#contact" class="contact-link" id="contact-page">Contact</a>
+            <a href="koszyk.php" class="button" id="cart-page"><img src="photos/cart.svg" alt="cart" class="cart" height="60px"></a>
     </div>
 </nav>
     <div class="tło">
