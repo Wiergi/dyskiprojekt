@@ -205,4 +205,3 @@ $metody_platnosci_result = $mysqli->query("SELECT metoda_id, nazwa FROM metodypl
 
 <?php
 $mysqli->close();
-?>

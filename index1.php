@@ -161,122 +161,98 @@ while ($row = $capacitiesResult->fetch_assoc()) {
             color: #fff;
         }
         
-        *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", serif;
-    scroll-behavior: smooth ;
-    scroll-padding-top: 400px;
-    background-color: black;
+        .navbar_container {
+  display: flex;
+  justify-content: space-around; /* Równomierne rozmieszczenie elementów */
+  align-items: center; /* Wyśrodkowanie w pionie */
+  background-color: #333; /* Ciemne tło */
+  color: white; /* Biały kolor tekstu */
+  padding: 10px 20px; /* Odstępy wewnątrz */
+  position: relative; /* Dla pozycjonowania absolutnego przycisku zamykania */
 }
 
-nav{
-  height: 80px;
-  background-color: rgba(0, 0, 0, 1);
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-    
+/* Ukryj checkbox i przycisk zamykania na większych ekranach */
+.close-sidebar-button {
+  display: none;
 }
-.navbar_container{
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 0 10px;
+
+.home-link {
+  text-decoration: none; /* Usuń podkreślenie */
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
 }
-nav a{
-  height: 100%;
-  padding: 0 20px;
-  display: flex;
-  align-items: center;
+
+#logo {
+  height: 60px; /* Zmniejsz logo */
+}
+
+/* Style dla linków nawigacyjnych */
+.navbar_container a {
+  color: #eee; /* Jaśniejszy kolor linków */
   text-decoration: none;
-  color: whitesmoke;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease; /* Efekt hover */
 }
-nav a:hover{
-    color: lightgray;
-    transition: 0.4s ease-in-out;
-}
-.button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    outline: none;
-    border-radius: 20px;
-    background-color: black;
-    color: white;
-    margin: 20px 0;
-    height: 55px;
-}
-.button:hover{
-    transform: scale(1.1);
-    transition-duration: 0.5s;
-    color: lightslategray;
-}
-nav .home-link{
-  margin-right: auto;
-}
-nav svg{
-  fill: gray;
-}
-nav svg:hover{
-    fill: black;
-    transition: .4s ease-in-out;
-}
-#sidebar-active{
-  display: none;
-}
-.open-sidebar-button, .close-sidebar-button{
-  display: none;
-}
-@media(max-width: 665px){
-  .navbar_container{
-    flex-direction: column;
-    align-items: flex-start;
 
-    position: fixed;
-    top: 0;
-    right: -100%;
-    z-index: 10;
-    width: 300px;
+.navbar_container a:hover {
+  background-color: #555; /* Jaśniejsze tło po najechaniu */
+}
 
-    background-color: black;
-    box-shadow: -5px 0 5px rgba(0, 0, 0, 0.25);
-    transition: 0.75s ease-out;
+/* Style dla ikony koszyka */
+.cart {
+  height: 40px; /* Zmniejsz ikonę koszyka */
+  vertical-align: middle; /* Wyśrodkuj w pionie */
+}
+
+/* Style dla przycisku koszyka */
+#cart-page {
+  background-color: #4CAF50; /* Zielony kolor przycisku */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#cart-page:hover {
+  background-color: #367c39; /* Ciemniejszy zielony po najechaniu */
+}
+
+/* Media queries dla responsywności (dla małych ekranów) */
+@media (max-width: 768px) {
+  .navbar_container {
+      flex-direction: column; /* Elementy w kolumnie */
+      align-items: flex-start; /* Wyrównaj do lewej */
   }
-  nav .home-link{
-    display: none;
+
+  /* Pokaż checkbox i przycisk zamykania */
+  .close-sidebar-button {
+      display: block;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      cursor: pointer;
   }
-  nav a{
-    box-sizing: border-box;
-    height: auto;
-    width: 100%;
-    padding: 20px 30px;
-    justify-content: flex-start;
+
+  .close-sidebar-button svg {
+      fill: white; /* Kolor ikony */
   }
-  .open-sidebar-button, .close-sidebar-button{
-    padding: 20px;
-    display: block;
-    cursor: pointer;
+
+  /* Ukryj elementy nawigacyjne */
+  .navbar_container > a {
+      display: none;
   }
-  #sidebar-active:checked ~ .navbar_container{
-    right: 0;
-  }
-  #sidebar-active:checked ~ #overlay{
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9;
+
+  #cart-page {
+      margin-top: 10px;
   }
 }
+
     </style>
 </head>
 <body>

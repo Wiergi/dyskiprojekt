@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins", serif;
+    font-family: "Roboto Flex", serif;
     scroll-behavior: smooth ;
     scroll-padding-top: 400px;
     background-color: black;
@@ -117,8 +118,172 @@ nav svg:hover{
 
 .tło{
     position: absolute;
-    width: 100vw;
+    width: 90vw;
+    margin-left: 5vw;
 }
 .dysk{
-  width: 100vw;
+  width: 99vw;
+}
+/* Ogólny styl dla banera */
+.banner {
+  position: relative;
+  width: 100%;
+  height: 50vh; /* Maksymalna wysokość: 40% widocznej wysokości */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Dopasowanie wideo do kontenera */
+  filter: blur(50px) brightness(0.6); /* Rozmycie i przyciemnienie wideo */
+}
+
+.banner-content {
+  position: relative; /* Aby treść była nad wideo */
+  z-index: 2;
+}
+
+.explore-button {
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  color: white;
+  background: linear-gradient(to right, #fae887, #ffd783, #ffc68b, #ffb69b);
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.explore-button:hover {
+  transform: scale(1.2); /* Powiększenie przycisku */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
+}
+
+/* Efekt powiększenia banera po przewinięciu na jego poziom */
+.banner {
+  transition: transform 0.5s ease-in-out, height 0.5s ease-in-out; /* Animacja zmiany rozmiaru */
+}
+
+.banner.scrolled {
+  height: 60vh; /* Powiększenie do 50% wysokości widocznej strony */
+}
+
+/* Responsywność dla mniejszych ekranów */
+@media (max-width: 768px) {
+  .banner {
+      height: 50vh; /* Na mniejszych ekranach domyślnie większy baner */
+  }
+
+  .explore-button {
+      font-size: 1.2rem; /* Mniejszy tekst przycisku */
+      padding: 10px 20px;
+  }
+}
+
+.about-company {
+  background-color: #000;
+  color: #fff;
+  padding: 40px 0;
+}
+
+.about-company .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.company-info {
+  width: 50%;
+  padding: 20px;
+}
+
+.company-info h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.company-info p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.company-video {
+  width: 50%;
+  padding: 20px;
+}
+
+.company-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .about-company .container {
+      flex-direction: column;
+  }
+  
+  .company-info, .company-video {
+      width: 100%;
+      padding: 10px;
+  }
+  
+  .company-video video {
+      height: 300px; /* Ustawienie stałej wysokości na mniejszych ekranach */
+  }
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.slide{
+  overflow: hidden;
+  padding: 20px 0;
+  color: black;
+  background-color: #fff;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.slide:hover .logos-slides{
+  animation-play-state: paused;
+}
+.slide:hover img{
+  transform: scale(1.1);
+  transition: 0.5s ease-in-out;
+}
+
+.logos-slides{
+  white-space: nowrap;
+  background-color: #fff;
+  animation: 15s slide linear infinite;
+  display: inline-block;
+
+}
+
+.logos-slides img{
+  height: 120px;
+  background-color: #fff;
+  margin: 5px 30px;
+}
+h2 {
+  color: white;
+  text-align: center;
 }
