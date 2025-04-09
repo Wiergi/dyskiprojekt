@@ -38,7 +38,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `username`, `password_hash`) VALUES
-(1, 'Wiergi', '$2a$12$QlP3kDB5fPVADwyH0TVzOOo219PQdxKFEmU7wXiATG/8Id7GQN3jK');
+(1, 'ADMIN', 'PASSWORD');
 
 -- --------------------------------------------------------
 
@@ -84,9 +84,6 @@ CREATE TABLE `klienci` (
 --
 -- Dumping data for table `klienci`
 --
-
-INSERT INTO `klienci` (`klient_id`, `imie`, `nazwisko`, `email`, `telefon`, `data_rejestracji`, `adres_id`) VALUES
-(5, 'Bartosz ', 'Wiergan', 'bartek.wietgan@gmail.com', '+48 152 151 511', '2025-04-02', NULL);
 
 -- --------------------------------------------------------
 
